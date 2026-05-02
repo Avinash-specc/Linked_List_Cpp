@@ -20,6 +20,13 @@ class Hero
         this -> level= level;
     }
 
+    //copy constructor
+    Hero(Hero& temp){
+        cout<<"Copy constructor called."<<endl;
+        this->health=temp.health;
+        this->level = temp.level;
+    }
+
     private:
     char level;
     // void print(){
@@ -30,7 +37,8 @@ class Hero
     public:
 
     void print(){
-        cout<<level<<endl;
+        cout<<"Health : "<<this->health<<endl;
+        cout<<"Level : "<<this->level<<endl;
     }
     int getHealth(){
         return health;
@@ -89,11 +97,17 @@ int main()
     */
 
 
-    Hero Ramesh(10,'B');
-    cout<<Ramesh.getHealth()<<endl;;
-    cout<<Ramesh.getLevel()<<endl;
+    // Hero Ramesh(10,'B');
+    // cout<<Ramesh.getHealth()<<endl;;
+    // cout<<Ramesh.getLevel()<<endl;
 
 
-    Hero temp(11,'B');
+    // Hero temp(11,'B');
+
+    Hero r(70,'C');
+    r.print();
+
+    Hero s(r);//copy constructor
+    s.print();
     return 0;
 }
