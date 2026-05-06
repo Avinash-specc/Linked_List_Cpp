@@ -15,6 +15,7 @@ void update(int **p2){
 }
 
 int main(){
+    /*
     int i =5;
     int* p = &i;
     int** p2 = &p;
@@ -31,5 +32,9 @@ int main(){
     cout<<"After "<<p<<endl;
     cout<<"After "<<p2<<endl;
 
+    */
+
+     
     return 0;
+
 }
