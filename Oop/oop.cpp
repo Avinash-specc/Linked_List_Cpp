@@ -6,6 +6,7 @@ class Hero{
 public:
     char *name;
     char level;
+    static int timeToComplete;
 
 
     Hero(){
@@ -62,25 +63,35 @@ public:
     void setName(char Name[]){
         strcpy(this->name,Name);
     }
+
+    static int random(){
+        return timeToComplete;
+    }
+
+    //Destructor
+    ~Hero(){
+        cout<<"Destructor Called"<<endl;
+    }
 };
+
+int Hero::timeToComplete = 5;
 int main(){
 
+    cout<<Hero::random()<<endl;
 
-    Hero hero1;
-    hero1.setHealth(12);
-    hero1.setLevel('D');
-    char name[7] = "Aswani";
-    hero1.setName(name);
+    // Hero hero1;
+    // hero1.setHealth(12);
+    // hero1.setLevel('D');
+    // char name[7] = "Aswani";
+    // hero1.setName(name);
 
-    // hero1.print();
+    // // hero1.print();
 
 
-    Hero hero2(hero1);
-    hero2.print();
+    // Hero hero2(hero1);
+    // hero2.print();
 
-    hero1.name[0] = 'S';
-    hero1.print();
-    hero2.print();
+    // 
 
     // Hero suresh(70,'C');
     // suresh.print();
