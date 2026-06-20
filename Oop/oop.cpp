@@ -1,113 +1,158 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
-
-class Hero
-{
-    public:
-    //properties
+class Hero{
     int health;
+public:
+    char *name;
+    char level;
+
 
     Hero(){
-        cout<<"Constructor Called "<<endl;
-    } //It will overrule the default constructor
+        cout<<" Default Constructor called.";
+        name = new char[100];
+    }
 
     Hero(int health){
-        this -> health=health;
+        // health = health; //will cause errors in identification of which health so we will use this to target the current object then we will 
+
+        cout<<"this -> "<<this <<endl;
+        this-> health = health;
     }
 
-    Hero(int health,char level){
-        this -> health=health;
-        this -> level= level;
+    Hero(int health, char level){
+        this-> level = level;
+        this-> health = health;
     }
 
-    //copy constructor
+    // copy constructor
     Hero(Hero& temp){
-        cout<<"Copy constructor called."<<endl;
-        this->health=temp.health;
+
+        char *ch = new char[strlen(temp.name)+1];
+        strcpy(ch,temp.name);
+        this->name = ch;
+
+        cout<<"Copy constructor called"<<endl;
+        this->health = temp.health;
         this->level = temp.level;
     }
 
-    private:
-    char level;
-    // void print(){
-    //     cout<<level<<endl;
-    // }
-
-    
-    public:
-
     void print(){
-        cout<<"Health : "<<this->health<<endl;
-        cout<<"Level : "<<this->level<<endl;
+        cout<<endl;
+        cout<<"[ Name: "<<this->name<<" ,";
+        cout<<"Level: "<<this->level<<" ,";
+        cout<<"Health: "<<this->health<<" ]";
+        cout<<endl;
     }
+
     int getHealth(){
         return health;
     }
     char getLevel(){
         return level;
     }
+
     void setHealth(int h){
         health = h;
     }
-    void setLevel(char l){
-        level = l;
+    void setLevel(char ch){
+        level = ch;
     }
 
+    void setName(char Name[]){
+        strcpy(this->name,Name);
+    }
 };
-
-int main()
-{
-    //creation of object
-    // Hero Ramesh;
-
-    // cout<<"Size of Ramesh is : "<<sizeof(Ramesh)<<endl;
-
-    // //Read about padding and greedy element.
-
-    // cout<<"Health is : "<<Ramesh.health<<endl;
-    // cout<<"Level is : "<<Ramesh.getLevel()<<endl;
-    // // cout<<"size : "<<sizeof(h1);
-    // Ramesh.setHealth(90);
-
-    // cout<<"Updated Health is : "<<Ramesh.health; 
+int main(){
 
 
-    //Static allocation
+    Hero hero1;
+    hero1.setHealth(12);
+    hero1.setLevel('D');
+    char name[7] = "Aswani";
+    hero1.setName(name);
+
+    // hero1.print();
+
+
+    Hero hero2(hero1);
+    hero2.print();
+
+    hero1.name[0] = 'S';
+    hero1.print();
+    hero2.print();
+
+    // Hero suresh(70,'C');
+    // suresh.print();
+
+    // Hero ritesh(suresh);//copy constructor
+    // ritesh.print();
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //creation of Object
+    // Hero ramesh;
+
+    // //getter and setter
+    // ramesh.setHealth(70);
+    // cout<<"Ramesh health is "<<ramesh.getHealth()<<endl;
+
+
+    // // ramesh.health = 70;
+    // ramesh.level = 'A';
+    // // cout<<"Health is : "<<ramesh.health<<endl;
+    // cout<<"Level is : "<<ramesh.level<<endl;
 
     /*
     Hero a;
     a.setHealth(80);
-    a.setLevel('B');
-    cout<<"Level is : "<<a.getLevel()<<endl;
+    a.setLevel('A');
+
+    cout<<"Level is : "<<a.level<<endl;
     cout<<"Health is : "<<a.getHealth()<<endl;
-    a.setHealth(80);
-    a.setLevel('B');
 
-    //dynamically allocation
+
+    //dynamically
     Hero *b = new Hero;
-    b->setLevel('A');
+    b->setLevel('B');
     b->setHealth(70);
-    cout<<"Level is : "<<b->getLevel()<<endl;
-    cout<<"Health is : "<<b->health<<endl;
 
+    cout<<"Level is : "<<(*b).level<<endl;
+    cout<<"Health is : "<<(*b).getHealth()<<endl;
 
-    cout<<"Level is : "<<b->getLevel()<<endl;
-    cout<<"Health is : "<<b->health<<endl;
+    cout<<"Level is : "<<b->level<<endl; //another syntax to derefrence
+    cout<<"Health is : "<<b->getHealth()<<endl;
 
     */
 
 
-    // Hero Ramesh(10,'B');
-    // cout<<Ramesh.getHealth()<<endl;;
-    // cout<<Ramesh.getLevel()<<endl;
+    //statically
+    // Hero Ramesh(10);
+    // // cout<<"Address of Ramesh: "<<&Ramesh<<endl;
+    // // Ramesh.getHealth();
 
+    // Ramesh.print();
+    // //dynamically
+    // Hero *h = new Hero(11);
+    // h->print();
 
-    // Hero temp(11,'B');
+    // Hero temp(22,'B');
+    
 
-    Hero r(70,'C');
-    r.print();
-
-    Hero s(r);//copy constructor
-    s.print();
     return 0;
 }
