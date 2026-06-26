@@ -16,7 +16,7 @@ public:
         cout<<"output: "<<value2-value1<<endl;
     } // Strict Syntax to implement operator overloading.
 };
-int main(){
+int main(){ 
     B obj1,obj2;
     
     obj1.a = 4;
